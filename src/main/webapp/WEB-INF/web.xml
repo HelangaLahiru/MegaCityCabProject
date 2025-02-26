@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+
+    <!-- Servlet Definitions -->
+    <servlet>
+        <servlet-name>addCustomer</servlet-name>
+        <servlet-class>Servlet.addCustomer</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>addDriver</servlet-name>
+        <servlet-class>Servlet.addDriver</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>TakeDriversCarUnassigned</servlet-name>
+        <servlet-class>Servlet.TakeDriversCarUnassigned</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>addCar</servlet-name>
+        <servlet-class>Servlet.addCar</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>GetCarDetails</servlet-name>
+        <servlet-class>Servlet.GetCarDetails</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>addBooking</servlet-name>
+        <servlet-class>Servlet.addBooking</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>updateHCandTPA</servlet-name>
+        <servlet-class>Servlet.updateHCandTPA</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>finishTheJourney</servlet-name>
+        <servlet-class>Servlet.finishTheJourney</servlet-class>
+    </servlet>
+
+    <!-- Servlet Mappings -->
+    
+    <servlet-mapping>
+        <servlet-name>addCustomer</servlet-name>
+        <url-pattern>/addCustomer1</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>addDriver</servlet-name>
+        <url-pattern>/addDriver1</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>TakeDriversCarUnassigned</servlet-name>
+        <url-pattern>/TakeDriversCarUnassigned1</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>addCar</servlet-name>
+        <url-pattern>/addCar1</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>GetCarDetails</servlet-name>
+        <url-pattern>/GetCarDetails1</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>addBooking</servlet-name>
+        <url-pattern>/addBooking1</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>updateHCandTPA</servlet-name>
+        <url-pattern>/updateHCandTPA1</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>finishTheJourney</servlet-name>
+        <url-pattern>/finishTheJourney1</url-pattern>
+    </servlet-mapping>
+
+</web-app>
