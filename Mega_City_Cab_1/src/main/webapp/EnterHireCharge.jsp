@@ -64,7 +64,7 @@
         // Load the database driver
         Class.forName("com.mysql.jdbc.Driver");
         // Establish connection
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "Helanga@2003");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "");
 
         // SQL query to join booking_table and filter by Driver_ID, Hire_Charge, and Total_Payable_Amount
         String query = "SELECT booking_table.Booking_ID, booking_table.Car_Name, booking_table.Car_Brand, " +

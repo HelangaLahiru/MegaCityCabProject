@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnector {
 	public static Connection getConnection() throws ClassNotFoundException,SQLException {
 		String username = "root";
-		String password =  "Helanga@2003";
+		String password =  "";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false", username, password);
