@@ -108,7 +108,7 @@
                     <th>Assignability Status</th>
                 </tr>
                 <%
-                try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "")) {
+                try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "Helanga@2003")) {
                     Class.forName("com.mysql.jdbc.Driver");
 
                     String query = "SELECT c.Car_ID, c.Car_Name, c.Car_Brand, c.Car_Number_Plate, " +

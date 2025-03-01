@@ -213,7 +213,7 @@
         // Load the database driver
         Class.forName("com.mysql.jdbc.Driver");
         // Establish connection
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "Helanga@2003");
 
         // Get the Car_ID from the request
         String bookingId = request.getParameter("Booking_ID");
