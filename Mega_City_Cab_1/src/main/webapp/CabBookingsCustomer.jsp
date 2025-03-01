@@ -144,7 +144,7 @@
     <div class="search-bar">
       <form method="GET" action="">
         <div class="search-container">
-          <input type="text" name="search" placeholder="Search by Appointment Date or Time" value="<%= searchTerm != null ? searchTerm : "" %>">
+          <input type="text" name="search" placeholder="Search by Booked Date or Time" value="<%= searchTerm != null ? searchTerm : "" %>">
           <button type="submit">Search</button>
         </div>
       </form>
