@@ -77,31 +77,10 @@
                        "FROM booking_table " +
                        "LEFT JOIN car_table ON booking_table.Car_ID = car_table.Car_ID AND car_table.Car_Status = 'Not Available' " +
                        "WHERE booking_table.Driver_ID = ? AND booking_table.Journey_Status = 'You are on Journey' AND booking_table.Hire_Charge != 'Will be Notified Soon' AND booking_table.Total_Payable_Amount != 'Will be Notified Soon'";
-
-        // Add search filtering if searchTerm exists
-        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-            query += " AND (booking_table.Car_Name LIKE ? OR " +
-                     "booking_table.User_Username LIKE ? OR " +
-                     "booking_table.Booked_Date LIKE ? OR " +
-                     "booking_table.Booked_Time LIKE ? OR " +
-                     "booking_table.User_Current_Location LIKE ? OR " +
-                     "booking_table.User_Destination LIKE ?)";
-        }
-
+        
         // Prepare the statement
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, Driver_ID);
-
-        // Conditionally bind search term parameters
-        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-            String searchPattern = "%" + searchTerm + "%";
-            ps.setString(2, searchPattern);
-            ps.setString(3, searchPattern);
-            ps.setString(4, searchPattern);
-            ps.setString(5, searchPattern);
-            ps.setString(6, searchPattern);
-            ps.setString(7, searchPattern);
-        }
 
         // Execute the query
         ResultSet rs = ps.executeQuery();
@@ -150,22 +129,6 @@
     </c:choose>
 
     <h1 class="header1">Finish Your Journey</h1>
-    
-    <div class="search-bar">
-      <form method="GET" action="">
-        <div class="search-container">
-          <input type="text" name="search" placeholder="Search by Appointment Date or Time" value="<%= searchTerm != null ? searchTerm : "" %>">
-          <button type="submit">Search</button>
-        </div>
-      </form>
-      <%
-    	if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-	%>
-    <p class="search-label">Search results for "<%= searchTerm %>"</p>
-	<%
-    	}
-	%>
-    </div>
     
     <div class="menu-box">
     <table>

@@ -66,37 +66,16 @@
         // Establish connection
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/megacitycab1?characterEncoding=utf8&serverTimezone=UTC", "root", "");
 
-        // SQL query to join booking_table and filter by User_ID
+        // SQL query to join booking_table and filter by Driver_ID, Hire_Charge, and Total_Payable_Amount
         String query = "SELECT booking_table.Booking_ID, booking_table.Car_Name, booking_table.Car_Brand, " +
                        "booking_table.Car_Number_Plate, booking_table.Car_Colour, booking_table.Driver_Name, booking_table.Driver_Telephone_Number, booking_table.Car_Booking_Price, " +
                        "booking_table.User_Telephone_Number, booking_table.User_Username, booking_table.User_Address, booking_table.User_Current_Location, booking_table.User_Destination, " +
                        "booking_table.Booked_Date, booking_table.Booked_Time, booking_table.Hire_Charge, booking_table.Total_Payable_Amount " +
                        "FROM booking_table WHERE Driver_ID = ? AND Hire_Charge = 'Will be Notified Soon' AND Total_Payable_Amount = 'Will be Notified Soon'";
 
-        // Add search filtering if searchTerm exists
-        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-            query += " AND (booking_table.Car_Name LIKE ? OR " +
-                     "booking_table.User_Username LIKE ? OR " +
-                     "booking_table.Booked_Date LIKE ? OR " +
-                     "booking_table.Booked_Time LIKE ? OR " +
-                     "booking_table.User_Current_Location LIKE ? OR " +
-                     "booking_table.User_Destination LIKE ?)";
-        }
-
         // Prepare the statement
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, Driver_ID);
-
-        // Bind search term parameters
-        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-            String searchPattern = "%" + searchTerm + "%";
-            ps.setString(2, searchPattern);
-            ps.setString(3, searchPattern);
-            ps.setString(4, searchPattern);
-            ps.setString(5, searchPattern);
-            ps.setString(6, searchPattern);
-            ps.setString(7, searchPattern);
-        }
 
         // Execute the query
         ResultSet rs = ps.executeQuery();
@@ -143,22 +122,6 @@
     </c:choose>
 
     <h1 class="header1">Hire Charge Entering List</h1>
-    
-    <div class="search-bar">
-      <form method="GET" action="">
-        <div class="search-container">
-          <input type="text" name="search" placeholder="Search by Appointment Date or Time" value="<%= searchTerm != null ? searchTerm : "" %>">
-          <button type="submit">Search</button>
-        </div>
-      </form>
-      <%
-    	if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-	%>
-    <p class="search-label">Search results for "<%= searchTerm %>"</p>
-	<%
-    	}
-	%>
-    </div>
     
     <div class="menu-box">
     <table>
