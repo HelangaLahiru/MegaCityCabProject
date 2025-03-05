@@ -101,7 +101,7 @@
         
         <button class="register-button" style="font-size:24px" type="submit" name="submit">Register</button>
         <div class="signIn-link">
-          <p>Already have an account?<a href="Login.php"class="signInBtn"> Sign In</a>
+          <p>Already have an account?<a href="Login.jsp"class="signInBtn"> Sign In</a>
         </p>
         </div>
       </form>

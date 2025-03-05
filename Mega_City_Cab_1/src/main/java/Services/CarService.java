@@ -3,6 +3,7 @@ package Services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,25 @@ public class CarService {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    public boolean isCabNumberPlateDuplicate(String cabNumberPlate) {
+        String query = "SELECT COUNT(*) FROM car_table WHERE Car_Number_Plate = ?";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, cabNumberPlate);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return true; // Duplicate found
+            }
+        } catch (SQLException e) {
+            System.err.println("SQL Error in isCabNumberPlateDuplicate: " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Unexpected Error in isCabNumberPlateDuplicate: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
     
     public Driver getDriverDetails(int driverId) {

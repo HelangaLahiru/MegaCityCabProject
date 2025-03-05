@@ -217,7 +217,7 @@
         
         <button class="register-button" style="font-size:24px" type="submit" name="submit">Login</button>
         <div class="signIn-link">
-          <p>Do not have an account?<a href="Register.php"class="signInBtn"> Sign Up</a>
+          <p>Do not have an account?<a href="Register.jsp"class="signInBtn"> Sign Up</a>
         </p>
         </div>
       </form>

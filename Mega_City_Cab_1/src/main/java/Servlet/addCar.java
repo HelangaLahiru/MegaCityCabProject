@@ -60,20 +60,31 @@ public class addCar extends javax.servlet.http.HttpServlet {
 
         // Pass the Car object to the service layer
         CarService carService = new CarService();
-        boolean isRegistered = carService.registerCar(car);
+        
+        boolean isCabNumberPlateDuplicate = carService.isCabNumberPlateDuplicate(car.getCar_Number_Plate());
 
-        // Generate JavaScript response
         response.setContentType("text/html");
-        if (isRegistered) {
+        if (isCabNumberPlateDuplicate) {
+            response.setContentType("text/html");
             response.getWriter().println("<script type=\"text/javascript\">");
-            response.getWriter().println("alert('Cab Addition is Successful and Driver Status is Updated');");
-            response.getWriter().println("window.location.href = 'AdminDashboard.jsp';");
+            response.getWriter().println("alert('Please Enter a Different Number Plate Value!');");
+            response.getWriter().println("history.back();"); // Go back to the previous page without redirecting
             response.getWriter().println("</script>");
         } else {
-            response.getWriter().println("<script type=\"text/javascript\">");
-            response.getWriter().println("alert('Car Addition Failed or Driver Status Update Failed');");
-            response.getWriter().println("window.location.href = 'ManageCars.jsp';");
-            response.getWriter().println("</script>");
+            // Proceed with registration if no duplicates found
+            boolean isRegistered = carService.registerCar(car); // Assume this method returns true/false
+
+            if (isRegistered) {
+            	response.getWriter().println("<script type=\"text/javascript\">");
+                response.getWriter().println("alert('Cab Addition is Successful and Driver Status is Updated!');");
+                response.getWriter().println("window.location.href = 'AdminDashboard.jsp';");
+                response.getWriter().println("</script>");
+            } else {
+            	response.getWriter().println("<script type=\"text/javascript\">");
+                response.getWriter().println("alert('Cab Addition Failed or Driver Status Update Failed!');");
+                response.getWriter().println("window.location.href = 'ManageCabs.jsp';");
+                response.getWriter().println("</script>");
+            }
         }
     }
 
